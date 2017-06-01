@@ -1,6 +1,6 @@
 import React from 'react';
 
-const GameOverScreen = () => {
+const GameOverScreen = (props) => {
   let styles = {
     backgroundColor: 'rgba(255, 255, 255, 0.7)',
     position: 'absolute',
@@ -12,6 +12,7 @@ const GameOverScreen = () => {
     display: 'flex',
     justifyContent: 'center'
   }
+  if (!props.isGameOver) styles.display = 'none'
   return (
     <div style={styles}>
       <h1>Game Over</h1>
