@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import GameButton from './GameButton';
 import GameMenu  from './GameMenu';
+import GameOverScreen from './GameOverScreen';
 import { colors } from '../constants';
 import Radium from 'radium';
 
@@ -96,6 +97,11 @@ class GameBoard extends Component {
       asyncPlay(0)
     })
   }
+  gameOver() {
+    this.setState({
+      gameState: 'gameOver'
+    })
+  }
   render() {
     let gameColors = [colors.red, colors.blue, colors.green, colors.yellow]
     return (
@@ -123,6 +129,7 @@ class GameBoard extends Component {
           transform: 'translate(-50%,-50%)',
           zIndex: 1
         }}/>
+        <GameOverScreen isGameOver={this.state.gameState === 'gameOver'}/>
       </div>
     );
   }
