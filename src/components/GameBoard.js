@@ -51,6 +51,25 @@ class GameBoard extends Component {
     }
   }
   gameButtonClicked(buttonId) {
+    let currentOrder = this.state.currentOrder
+    let currentClick = this.state.currentClick
+    let score = this.state.score
+    if (buttonId === currentOrder[currentClick]) {
+      currentClick++;
+    } else {
+      this.gameOver()
+    }
+
+    if (currentClick === currentOrder.length) {
+      score++
+      currentClick = 0
+      setTimeout(() => this.playTone(), 1000)
+    }
+
+    this.setState({
+      currentClick,
+      score
+    })
   }
   playTone() {
     this.setState({
