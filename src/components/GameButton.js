@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Color from 'color'
+import { Howl } from 'howler'
 
 class GameButton extends Component {
   constructor(props) {
@@ -9,12 +10,14 @@ class GameButton extends Component {
     }
   }
   buttonPress(callback) {
-    let audio = new Audio(this.props.audio)
-    audio.onended = () => {
-      this.setState({
-        backgroundColor: this.props.color
-      }, callback)
-    }
+    let audio = new Howl({
+      src: [this.props.audio],
+      onend: () => {
+        this.setState({
+          backgroundColor: this.props.color
+        }, callback)
+      }
+    })
     audio.play()
     this.setState( { backgroundColor: Color(this.state.backgroundColor).darken(0.5) })
   }
