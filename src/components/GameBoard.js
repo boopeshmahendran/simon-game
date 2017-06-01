@@ -53,6 +53,29 @@ class GameBoard extends Component {
   gameButtonClicked(buttonId) {
   }
   playTone() {
+    this.setState({
+      gameState: 'tonePlaying'
+    }, () => {
+      let currentOrder = this.state.currentOrder
+      // choose random number from 1 to 4
+      let randomNumber = Math.floor(Math.random() * 4)
+      currentOrder.push(randomNumber)
+      this.setState({
+        currentOrder
+      })
+      const asyncPlay = (i) => {
+        if (i >= currentOrder.length) {
+          this.setState({
+            gameState: 'gameRunning'
+          })
+          return
+        }
+        this['button' + currentOrder[i]].buttonPress(() => {
+          setTimeout(() => asyncPlay(i + 1), 500)
+        })
+      }
+      asyncPlay(0)
+    })
   }
   render() {
     let gameColors = [colors.red, colors.blue, colors.green, colors.yellow]
