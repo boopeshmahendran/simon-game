@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import GameButton from './GameButton';
 import GameMenu  from './GameMenu';
 import { colors } from '../constants';
+import Radium from 'radium';
 
 class GameBoard extends Component {
   constructor() {
@@ -74,4 +75,4 @@ class GameBoard extends Component {
   }
 }
 
-export default GameBoard;
+export default Radium(GameBoard);
