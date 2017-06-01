@@ -38,6 +38,17 @@ class GameBoard extends Component {
     this.setState(this.getInitialState(), callback)
   }
   actionButtonClicked() {
+    switch(this.state.gameState) {
+      case 'gameNotStarted':
+       this.playTone()
+       this.setState({
+        gameState: 'gameRunning'
+      })
+        break
+      case 'gameOver':
+        this.setInitialState(this.actionButtonClicked)
+        break
+    }
   }
   gameButtonClicked(buttonId) {
   }
