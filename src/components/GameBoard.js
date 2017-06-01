@@ -101,6 +101,16 @@ class GameBoard extends Component {
     this.setState({
       gameState: 'gameOver'
     })
+    this.setHighScore()
+  }
+  setHighScore() {
+    let prevHighScore = this.state.highScore
+    if (this.state.score > prevHighScore) {
+      this.setState({
+        highScore: this.state.score
+      })
+      localStorage.setItem('highScore', this.state.score)
+    }
   }
   render() {
     let gameColors = [colors.red, colors.blue, colors.green, colors.yellow]
