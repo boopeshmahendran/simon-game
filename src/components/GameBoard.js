@@ -120,7 +120,7 @@ class GameBoard extends Component {
           <GameButton
            color={color}
            gameButtonClicked={(buttonId)=>this.gameButtonClicked(buttonId)}
-           tonePlaying={this.state.gameState === 'tonePlaying'}
+           activateButton={this.state.gameState === 'gameRunning'}
            audio={`sounds/sound${i}.mp3`}
            ref={(button) => this['button'+i] = button}
            key={i}

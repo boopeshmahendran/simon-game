@@ -22,7 +22,7 @@ class GameButton extends Component {
     this.setState( { backgroundColor: Color(this.state.backgroundColor).darken(0.5) })
   }
   onClickHandler() {
-    if (this.props.tonePlaying) return
+    if (!this.props.activateButton) return
     this.buttonPress()
     this.props.gameButtonClicked(this.props.id)
   }
